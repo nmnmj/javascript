@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // area of square
+        let side = 10;
+        let area_square = side*side;
+        document.write('area of square of side ' + side +" is" + area_square + "<br>");
+        // area of rectangel
+        let length = 10;
+        let breadth = 20;
+        let area_rect = length*breadth;
+        document.write("area of rectangle of length" + length + "and breadth" + breadth +"is" + area_rect + "<br>");
+        //simple interest
+        let principleAmount = 100;
+        let rateOfInterest = 5;
+        let time = 2;
+        let simpleInterest = (principleAmount*rateOfInterest*time)/100;
+        document.write("Simple Interest of principle amount= 100, rate of interest =5% and time = 2 years is" + simpleInterest + "<br>");
+        //km to m
+        let km = 2;
+        let m = km*1000;
+        document.write(km +"km to m is "+ m + "<br>");
+        document.write(m +"m to km is "+ km + "<br>");
+        //swap with c
+        let a = 10;
+        let b =5;
+        let c;
+        c=a;
+        a=b;
+        b=c;
+        document.write("value of a is"+ a + "<br>");
+        document.write("value of b is"+ b + "<br>");
+        //swap without c
+        let a1 = 10;
+        let b1 = 20;
+        a1=a1+b1;
+        b1=a1-b1;
+        a1=a1-b1;
+        document.write("a1=10  value after swap is "+a1+".<br>b1=20 and value after swap is "+b1)
+    </script>
+</body>
+</html>

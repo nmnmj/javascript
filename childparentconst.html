@@ -1,0 +1,29 @@
+<script>
+    class Dummy
+    {
+        constructor(){
+            console.log("dummy");
+        }
+    }
+    class Demo extends Dummy
+    {
+        constructor(){
+            console.log("Demo");
+            super();
+        }
+    }
+    var d =new Demo();
+
+    //check the super here
+    class Dumm
+    {
+        constructor(n=10){                  //default argument value
+            console.log("dumm"+n);
+        }
+    }
+    class Dem extends Dumm
+    {
+       
+    }
+    var d =new Dem();
+</script>

@@ -1,0 +1,40 @@
+<script>
+    for(var i=1;i<=5;i++){
+        for(var j=1;j<=5-i;j++){
+            document.write("_");
+        }
+        for(var k=1;k<=i;k++){
+            document.write(k);
+        }
+        for(var l=i-1;l>=1;l--){
+            document.write(l);
+        }
+        document.write("<br>");
+    }
+    for(var a=1;a<=10;){
+        if(0){
+            continue;
+        }
+        // document.write(a+"<br>");
+        console.log(a);
+        a++;
+    }
+    for(var i=1;i<=5;i++){
+        for(var j=1;j<i;j++){
+            document.write("_");
+        }
+        for(var k=1;k<=11-2*i;k++){
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+    for(var i=2;i<=5;i++){
+        for(var j=i+1;j<=5;j++){
+            document.write("_");
+        }
+        for(var k=1;k<=2*i-1;k++){
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+</script>

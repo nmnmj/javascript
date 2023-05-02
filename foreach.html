@@ -1,0 +1,17 @@
+<script>
+var a= prompt("enter number");
+var ary = [10,20,30,40,50];
+// ary.forEach(function (v,i){
+//     console.log(v);
+//     ary[i]=v+5;
+// });
+// console.log(ary);
+ary = ary.filter(function (v,i){
+    return v!=a;
+});
+console.log(ary);
+ary=ary.filter(function(v,i){
+    return v%2!=0;
+})
+console.log(ary);
+</script>

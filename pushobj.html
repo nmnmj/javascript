@@ -1,0 +1,29 @@
+<input type="text" placeholder="name" id="name">
+<input type="text" placeholder="language" id="language">
+<ul id="list">
+    
+</ul>
+<button id="enroll" onclick="enrollStudent()">Enroll Student</button>
+<script>
+    var student =[
+        {name:"jay", language:"js"},
+        {name:"ajay", language:"java"}
+    ];
+   console.log(student.name);
+    function enrollStudent(n,l){
+        var n= document.getElementById("name").value;
+        var l= document.getElementById("language").value;
+        student.push({name:n, language:l});
+        console.log(student);
+        str="";
+        student.forEach(function(student){
+        str+=`<li>${student.name} and language ${student.language}</li>`;
+        document.getElementById("list").innerHTML=str;
+        });
+    }
+
+   for(var o of student){
+    console.log(o);
+   }
+    console.log(student.keys);
+</script>

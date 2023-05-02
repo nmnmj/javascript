@@ -1,0 +1,53 @@
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<input type="text" name="" id="nam" placeholder="name" onfocus="alphamsg()" onblur="alphamsgoff()"><span id="nammsg"></span><br>
+<input type="text" name="" id="email" placeholder="email" onkeydown="efunc()"><span id="e"></span><br>
+<input type="text" name="" id="mob" placeholder="mobile no" onkeyup="mobfunc()"><span id="mobmsg"></span><br>
+<script>
+
+//email***********************************8
+    function efunc(){
+        var emailregex= /([a-zA-Z0-9_\-\.]+[@][a-z]+[\.][a-z])/;
+        var em=document.getElementById("email");
+        var str=em.value;
+        if(emailregex.test(str)){
+            document.getElementById("e").innerHTML="correct";
+        }
+        else{
+            document.getElementById("e").innerHTML="wrong";
+        }
+    }
+//mob**************************************************************
+    function mobfunc(){
+    var mobregex = /((^[89\(+91)])[0-9]){10,10}/;
+    var mobst = document.getElementById("mob");
+    var mobstr = mobst.value;
+    if(mobregex.test(mobstr)){
+        document.getElementById("mobmsg").innerHTML="ok";
+    }
+    else{
+        document.getElementById("mobmsg").innerHTML="insert 10 numbers";
+    }
+    }
+//name*******************************
+    function alphamsg(){
+    document.getElementById("nammsg").innerHTML="Type Alphabets only"; 
+    $(document).ready(function(){
+            $("#nam").keypress(function(e){
+                var keyCode = e.which;
+                if(keyCode>=65 && keyCode<=90 || keyCode==32){
+                    return true;
+                }
+                else if(keyCode>=97 && keyCode<=122){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }); 
+        });
+    }
+    function alphamsgoff(){
+        document.getElementById("nammsg").innerHTML="";   
+    }
+
+</script>

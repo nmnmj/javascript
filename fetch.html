@@ -1,0 +1,71 @@
+<button onclick="show()">Show all data</button>
+<input type="number" id="n"/><button onclick="searchData()">Search</button>
+<button onclick="deleteData()">Delete</button><button onclick="updatePro()">Update</button><br>
+Name: <input type="text" name="" id="name"><br>
+Price: <input type="text" name="" id="price"><br>
+Category: <input type="text" name="" id="cat"><br>
+Company: <input type="text" name="" id="cmp"><br>
+<button onclick="addPro()">Add Product</button>
+<h1 id="data"></h1>
+<script>
+    async function updatePro(){
+        let id=document.getElementById("n").value
+        let obj={
+            name:document.getElementById("name").value,
+            price:document.getElementById("price").value,
+            cat:document.getElementById("cat").value,
+            cmp:document.getElementById("cmp").value
+        }
+        let options = {
+            method:'PUT',
+            headers: {
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body:JSON.stringify(obj)
+        }
+        var res = await fetch(`https://restapiss.herokuapp.com/product/${id}/`,options)
+        if(res.status===200){
+            alert("product successfully updated")
+        }
+    }
+    async function show(){
+        var res = await fetch("https://restapiss.herokuapp.com/product/");
+        var data = await res.json();
+        console.log(data);
+        document.getElementById("data").innerHTML=Object.values(data[0])
+    }
+    async function searchData(){
+        var n=document.getElementById("n").value;
+        var res = await fetch(`https://restapiss.herokuapp.com/product/${n}`);
+        var data= await res.json();
+        console.log(data);
+    }
+    async function deleteData(){
+        var n=document.getElementById("n").value;
+        var res = await fetch(`https://restapiss.herokuapp.com/product/${n}`,{
+            method:'DELETE',
+            headers:{'Content-Type':'application/json;charset=utf-8'}
+        });
+        var data = await res.json();
+        console.log("deleted data of "+n+" id");
+    }
+    async function addPro(){
+        var obj={
+            name:document.getElementById("name").value,
+            price:document.getElementById("price").value,
+            cat:document.getElementById("cat").value,
+            cmp:document.getElementById("cmp").value
+        }
+        let options = {
+            method:'POST',
+            headers: {
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body:JSON.stringify(obj)
+        }
+        var res = await fetch("https://restapiss.herokuapp.com/product/",options);
+        if(res.status===201){
+            alert("product successfully added")
+        }
+    }
+</script>

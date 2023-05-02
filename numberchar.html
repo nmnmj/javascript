@@ -1,0 +1,17 @@
+<script>
+    var a=[1,2,3,4,'e','r']
+    a.forEach((v,i,a)=>{
+        if(typeof v=='string'){
+            console.log(v+ " is string")
+        }
+        else if(typeof v==='number'){
+            console.log(v+' is number')
+        }
+    })
+    var b=a.filter((v,i,c)=>{
+        return typeof v==='string'
+    })
+    console.log(b)
+    var d= typeof NaN
+    console.log(d)
+</script>

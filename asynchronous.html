@@ -1,0 +1,36 @@
+<script>
+    // var a =10;
+    // console.log(a);
+    // setTimeout(function(){
+    //     a=20;
+    // },2000);
+    // console.log(a);
+    //making synchronous
+    function show(n){
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve(n**2);
+            },5000,n);
+        });
+    }
+    var b =10;
+    console.log(b);
+    var p= new Promise(function(resolve,reject){
+        setTimeout(function(){
+            resolve(b=20);
+        },3000);
+    });
+    // p.then(function(v){
+    //     console.log(v);
+    //     return show(v);
+    // }).catch(function(e){
+    //     console.log(e);
+    // });
+    async function display(){
+        var v= await p;             //after 2 seconds
+        console.log(v);     
+        var t = await show(v);      //after v then after 5 seconds
+        console.log(t);
+    }
+    display();
+</script>

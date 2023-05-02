@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      filter: drop-shadow(0 40px 10px black);
+      animation: updown 1s ease-in-out infinite  alternate ;
+    }
+    .p{
+      display: none;
+      text-transform: uppercase;
+    }
+    @keyframes updown {
+      to{
+        transform: translateY(10px);
+      }
+    }
+    .center:hover .p{
+      display: block;
+    }
+    @media screen and (max-width:600px) {
+      .center{
+        font-size: 10vw;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="center">
+    <p>Hello</p>
+    <div class="p" onclick="func(event)">
+      <h1>Hritik</h1>
+    </div>
+  </div>
+  <video width="100%" controls controlsList="nodownload nofullscreen " disablePictureInPicture disableRemotePlayback>
+    <source src="https://www.youtube.com/watch?v=8Uhyo5TUMYg" type="video/mp4">
+    <source src="mov_bbb.ogg" type="video/ogg">
+    Your browser does not support HTML video.
+  </video>
+
+  <script>
+    function func(event){
+      console.log(event)
+      console.log(event.target.innerText)
+      // window.location.href=event.target.innerText
+    }
+    
+    // let oa = [{a:1}, {b:2}]
+    // let sa = [...oa]
+    // sa[0].a=10
+    // console.log(oa)
+
+    let oa = [{a:1}, {b:2}]
+    let dc = oa.map((obj)=>{
+      return ({...obj})
+    })
+    dc[0].a=10
+    console.log(oa)
+    console.log(dc)
+
+  </script>
+  
+</body>
+</html>

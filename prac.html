@@ -1,0 +1,40 @@
+<script>
+    // var s = parseInt(prompt("enter start"));
+    // var e = parseInt(prompt("enter end"));
+    // var sum=0;
+    // for(var i=s;i<=e;i++){
+    //     if(i%s==0||i%e==0){
+    //         console.log(i);
+    //         sum=sum+i;
+    //     }
+    // }
+    // console.log(sum);
+    // var d= "hello";
+    // var r="";
+    // for(var i=d.length-1;i>=0;i--){
+    //     r=r+d[i];
+    // }
+    // document.write(r);
+    //split
+    var s = prompt("enter string in small case");
+    var r = "";
+    s=s.split(" ");
+    var n = "";
+    var length = [];
+    var i=0;
+    for(var j of s){
+        for(var k=j.length-1;k>=0;k--){
+            r=r+j[k];
+        }
+        r=r+" ";
+        var st = j.charAt(0).toUpperCase();
+        var lt = j.substring(1);
+        j=st.concat(lt+" ");
+        n=n+j;
+        length[i]=j.length-1;
+        i++;
+    }
+    console.log(n);
+    console.log(length);
+    console.log(r);
+</script>

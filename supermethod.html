@@ -1,0 +1,17 @@
+<script>
+    class Dummy
+    {
+        show(){
+            console.log("dummy");
+        }
+    }
+    class Demo extends Dummy
+    {
+        show(){
+            super.show();
+            console.log("demo");
+        }
+    }
+    var d= new Demo();
+    d.show();
+</script>

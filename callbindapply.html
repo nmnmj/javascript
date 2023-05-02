@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         db.createCollection("teacher", {
+   "validator": {
+      "$jsonSchema": {
+         "bsonType": "object",
+         "required": [ "name", "salary" ],
+         "properties": {
+            "name": {
+               "bsonType": "string",
+               "description": "must be a string and is required"
+            },
+            "salary": {
+               "bsonType": [ "int", "double" ],
+               "description": "must be a number and is required"
+            }
+         }
+      }
+   }
+})
+db.runCommand({
+   collMod: "teacher",
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "name", "salary" ],
+         properties: {
+            name: {
+               bsonType: "string",
+               description: "must be a string and is required"
+            },
+            salary: {
+               bsonType: [ "int", "double" ],
+               description: "must be a number and is required"
+            }
+         }
+      }
+   }
+})
+
+
+        //polypfill is to make our own Promise debounce etc which are predefined which we can also make it
+        let obj = {
+            age:"24"
+        }
+
+        function greet(name, color){
+            let g = 10
+            return "hello "+name+" whose age is "+this.age+" "+ color+" "+ this.g
+        }
+        
+        //1.- Call
+        // console.log(greet.call(obj, "raj", "black"))
+        //2. Apply
+        // console.log(greet.apply(obj, ["raj", "black"]))
+        //3.- Bind  (it return a function)
+        const bindFunc = greet.bind(obj)        //return function
+
+        // console.log(bindFunc("raj", "black"))
+        console.log(greet.bind(obj)("raj", "black"))
+
+        // const a =[1,2,3]        //we cant reassign in const but can alter it via push pop etc for array 
+        // let b =["a", "b"]
+
+        // a = [...a, ...b]
+        // console.log(a)
+
+        // a.push.apply(a, b)
+        // console.log(Math.max.apply(null, a))
+        // console.log(typeof undefined === 'undefined')   //undefined
+        // console.log(typeof null === 'object')        //object
+        // console.log(typeof NaN === 'number')         //number
+        // console.log(typeof "s" === 'string')         //string
+        // console.log(typeof a )                       //type of array is object
+        // console.log(Array.isArray(a))
+        // console.log(a)
+
+        function f(){
+            console.log(this.name)
+        }
+
+        f = f.bind({name:"raj"}).bind({name:"ajay"})    //bind chaining not exist so it will only consider first bind returned function
+        f()
+
+    </script>
+</body>
+</html>

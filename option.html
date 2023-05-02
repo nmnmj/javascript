@@ -1,0 +1,38 @@
+<select name="" id="state" onchange="show()">
+    <option value="">Select State</option>
+    <option value="mp">M.P.</option>
+    <option value="guj">Guj</option>
+    <option value="rj">RJ</option>
+    <option value="up">U.P.</option>
+</select>
+<select name="" id="city">
+
+</select>
+<script>
+    var obj={
+        select_state:[],
+        mp:['indore','ujjain','bhopal'],
+        up:['kanpur','ambedkarNagar',''],
+        guj:['baroda','ahemdabad','gandhinagar'],
+        rj:['jaipur','udaipur','bikaner']
+    };
+    
+    show= ()=>{
+        var c = document.getElementById("city");
+            c.innerHTML="";
+        var state= document.getElementById("state").value;
+        var j=0;
+        for(var i of Object.keys(obj)){
+            if(i==state){
+                for(var k of Object.values(obj)[j]){
+                    var t=document.createElement("option");
+                    var qr = document.querySelector("#city");
+                    t.textContent=k;
+                    qr.appendChild(t);
+                    console.log(k)
+                }
+            }
+            j++;
+        }
+    }
+</script>

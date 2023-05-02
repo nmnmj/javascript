@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //all async code will be executed first then all async call will be executed like api call or timeout or other functions
+    //it will find sync code inside async function and execute it line by line as normally it does.
+    //if throw come before return its a rejected promise
+    // console.log("start")
+
+    // function hello(text, cb){
+    //     setTimeout(()=>{
+    //         return cb(`${text} raj`)
+    //     },1000)
+    // }
+
+    // function eat(dish, cb){
+    //     setTimeout(() => {
+    //         return cb(`${dish} khalo`)
+    //     }, 1000);
+    // }
+
+    // let msg = hello("Great", function (msg){
+    //     console.log(msg)
+    //     eat("khana", (msg)=>{
+    //         console.log(msg)
+    //     })
+    // })
+
+
+    // console.log("end")
+
+    //this is messy so 
+    console.log("start")
+
+    // const p = new Promise((resolve, reject)=>{
+    //     // async function
+    //     setTimeout(() => {
+    //         const r = false
+    //         if(r){
+    //             return resolve("You will get chochlate")
+    //         }
+    //         else{
+    //             return reject(new Error("Why you didnt completed the chapter"))
+    //         }
+    //     }, 1000);
+    // })
+
+    // p.then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log(err)
+    // })
+    
+    function greet(name){
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                return resolve(`Hello ${name}`)
+            }, 1000);
+        })
+    }
+    function offering(dish){
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                return resolve(`Khalo ${dish}`)
+            }, 1000);
+        })
+    }
+    //return each promise one after the other. Promises chaining************
+    // greet("raj").then((res)=>{
+    //     console.log(res)
+    //     return offering("khana")
+    // }).then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log(err)
+    // })
+    
+    //return array of promises result if any of the promise fail whole will be failed
+    // Promise.all([
+    //     greet("raj"),
+    //     offering("khana"),
+    // ]).then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log("Error",err)
+    // })
+    
+    //the one that resolve first will be returned
+    // Promise.race([
+    //     greet("raj"),
+    //     offering("khana"),
+    // ]).then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log("Error",err)
+    // })
+    
+    //return array of promise resolved as well as rejected
+    // Promise.allSettled([
+    //     greet("raj"),
+    //     offering("khana"),
+    // ]).then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log("Error",err)
+    // })
+
+    //return the first one which gets resolved if all reject then only give err
+    // Promise.any([
+    //     greet("raj"),
+    //     offering("khana"),
+    // ]).then((res)=>{
+    //     console.log(res)
+    // }).catch((err)=>{
+    //     console.log("Error",err)
+    // })
+    
+    // whereever the promise rejected it stops further and show error execute promises one by one 
+    const asyncawait = async ()=>{
+        try {
+            console.log(1)                  //so this will be executed normally not like async
+            const gre = await greet("raj")
+            console.log(gre)
+            const offer = await offering("khana")
+            console.log(offer)
+        } catch (error) {
+            console.log("Error",error)
+        }
+    }
+
+    asyncawait()
+  
+
+
+
+    console.log("end")
+</script>
+</body>
+</html>

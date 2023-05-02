@@ -1,0 +1,17 @@
+<input id="name" type="text" onchange="checkit()">
+<button id="b1" disabled>submit</button>
+<script>
+    function checkit(){
+        var aval = document.getElementsByTagName("input").value;
+        if(aval =! ""){
+            document.getElementById("b1").disabled=false;
+            console.log("if running");
+        }
+        else{
+            document.getElementById("b1").disabled=true;
+        }
+    }
+    var a = [5,6,7,8];
+    a=a.splice(1,1,2);
+    console.log(a);
+</script>

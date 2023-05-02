@@ -1,0 +1,22 @@
+<script>
+    function getData(){                                 //sequence of processes
+        console.log("started getData");                 //2
+        data='';
+        url="fetch.txt";                                //generally html files
+        params={
+            method:"post",
+            headers:{'content-type':'applicatio/json'},
+            body:JSON.stringify(data)                   //stringify used for object not for string data          
+        }
+        fetch(url).then((response)=>{                   //params in argument with url 
+            console.log("inside first then");           //4
+            return response.text();                     //5     can use .json to parse it in object
+        }).then((data)=>{
+            console.log("inside second then");          //6
+            console.log(data);                          //7
+        })
+    }
+    console.log("before running getData");              //1
+    getData();
+    console.log("after running getData");               //3
+</script>

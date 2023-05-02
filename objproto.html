@@ -1,0 +1,78 @@
+<script>
+    var proto = {
+        slogan:function(){
+            return 'this is the best company';
+        },
+        changeName:function(newName){
+            this.name=newName;
+        }
+    }
+    var harry = Object.create(proto);
+    console.log(harry);
+
+    class Employee
+    {
+        constructor(nam, exp, div){
+            this.nam=nam;
+            this.exp=exp;
+            this.div=div;
+        }
+        slogan(){
+            return `I am ${this.nam} and this company is the best.`;
+        }
+        joiningExp(){
+            return 2022-this.exp;
+        }
+        static add(a,b){
+            return a+b;
+        }
+    }
+    class Programmer extends Employee
+    {
+        constructor(nam, exp, div, language){
+            super(nam, exp, div);
+            this.language=language;
+        }
+        favLang(){
+            return `${this.language} is ${this.nam} favourite language.`;
+        }
+        static multiply(a,b){
+            return a*b;
+        }
+    }
+    rohan = new Programmer("Rohan",3,"Lays","Js");
+    console.log(rohan);
+    console.log(rohan.favLang());
+    console.log(Programmer.multiply(1,2));
+    console.log(Programmer.add(1,2));
+    //unique elements from array*****************************
+    var w=["john","mathai","Rahj","john"];
+    var u=new Set(w);
+    var f=[...u];           //to again convert set to array
+    console.log(u);
+    //switch case with object********************************
+    var foodMap={
+        burger:200,
+        pizza:500,
+        sandwich:400,
+        juice:200
+    }
+    function getPrice(item){
+        return foodMap[item];
+    }
+    console.log(getPrice("burger"));
+//*********************************************************************
+    function isEligible(age){
+        return age>=18;
+    }                                                                           
+    console.log(isEligible(12));
+//************************************************
+    function login(){
+        console.log(this);
+    }
+    login();   
+    //removing elements from array*********************
+    var a = [1,2,3,4,5,6,7,8,3];
+    a=a.filter((a, index)=> index!=2  );
+    console.log(a); 
+</script>

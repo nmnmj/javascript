@@ -1,0 +1,12 @@
+<body onload="show()">
+    <h1 id="date"></h1>
+    
+</body>
+<script>
+    function show(){
+        setInterval(function(){
+        var d = new Date();
+        document.getElementById("date").innerHTML=d.toDateString("en-US")+"|"+d.toLocaleTimeString("en-US");
+    },1000);
+}
+</script>

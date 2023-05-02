@@ -1,0 +1,31 @@
+1<sup>st</sup>number<input type="text" id="i1"> <br>
+2<sup>nd</sup>number<input type="text" id="i2"> <br>
+enter operator <select name="" id="operation" onchange="calculate()">
+    <option value="+">add</option>
+    <option value="-">sub</option>
+    <option value="*">mul</option>
+    <option value="/">div</option>
+    </select><br><br>
+<input type="text" id="o1" readonly>
+    <script>
+        function calculate(){
+        var a = document.getElementById("i1");
+        var b = document.getElementById("i2");
+        var r = document.getElementById("o1");
+        var operator = document.getElementById("operation").value;
+        if(operator == "+"){
+            add = parseInt(a.value) + parseInt(b.value);
+            r.value = add;
+        }
+        if(operator == "-"){
+            sub = parseInt(a.value) - parseInt(b.value);
+            r.value = sub;
+        }if(operator == "*"){
+            mul = parseInt(a.value) * parseInt(b.value);
+            r.value = mul;
+        }if(operator == "/"){
+            div = parseInt(a.value) / parseInt(b.value);
+            r.value = div;
+        }
+        }
+    </script>

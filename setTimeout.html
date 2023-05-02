@@ -1,0 +1,15 @@
+<h1 id="h1"></h1>
+<h2></h2>
+<button id="btn" onclick="show()">click me</button>
+<script>
+    function show(){
+        for(var i=1;i<=10;i++){
+            setTimeout(function(n){
+                if(n==10){
+                    window.location.href="displaycalci.html";
+                }
+                document.getElementById("h1").innerHTML="pp"+n;
+            },1000*i,i);
+        }
+    }
+</script>

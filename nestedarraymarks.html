@@ -1,0 +1,29 @@
+<script>
+    var names=["jay","ajay","jaya"];
+    var marks = [[92,91,90,95,88],[80,99,98,96,93]];
+    var s=0;
+    
+    if(names.length>=marks.length){
+        s=marks.length;
+    }
+    else{
+        s=names.length;
+    }
+    for(var i=0;i<s;i++){
+        var sum=0;
+        for(var j of marks[i]){
+            sum=sum+j;
+        }
+        document.write(names[i]+" "+sum/marks[i].length+"<br>");
+    }
+    //////////////////////////////////////////////////////////////
+    var k = 0;
+    for(var i of names){
+        var sum = 0;
+        for(var j of marks[k]){
+            sum=sum+j;
+        }
+        document.write(names[k]+" "+sum/marks[k].length+"<br>");
+        k++;
+    }
+</script>

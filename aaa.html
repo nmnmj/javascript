@@ -1,0 +1,144 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@include file="db.jsp" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'></script>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container m-5 ">
+    <center>
+      <form action="Student.jsp" class="">
+        <table class=" bg-secondary rounded-3">
+          <thead>
+            <tr>
+              <td><input type="text" name="name" id="" placeholder="Enter Name" required></td>
+              <td> 
+                <select name="branch" id="" class="ms-5" required>
+                <%
+                String qr="select * from branch";
+                Statement st=con.createStatement();
+                ResultSet rs=st.executeQuery(qr);
+                if(rs.next()){
+                	do{
+                		String branch=rs.getString("branch");
+                		%>
+                		<option value="<%=branch %>"><%=branch %></option>
+                		<%
+                	}while(rs.next());
+                }
+                %>
+                  
+                </select>
+              </td>
+              <td>
+                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</a>                
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input type="email" name="email" id="" placeholder="Enter E-mail" required>
+              </td>
+              <td>
+                <select name="course" id="" class="ms-5" required>
+                  <%
+                  String qrr="select * from course";
+                  Statement stt=con.createStatement();
+                  ResultSet rss=st.executeQuery(qrr);
+                  if(rss.next()){
+                    do{
+                      String coursename=rss.getString("coursename");
+                      %>
+                      <option value="<%=coursename %>"><%=coursename %></option>
+                      <%
+                    }while(rss.next());
+                  }
+                  %>
+                </select>
+              </td>
+              <td>
+                <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">+</a> 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="password" name="pwd" id="" placeholder="Enter Password" class="mt-1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary mt-5">Add Student</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+    </center>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="Updatecourse.jsp">
+            <input type="text" name="branch" id="">
+            <button class="btn btn-info" >Add Branch</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal1 -->
+  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="Updatebranch.jsp">
+            <table>
+              <tr>
+                <td>CourseName</td>
+                <td><input type="text" name="coursename" id="" required></td>
+              </tr>
+              <tr>
+                <td>Fee</td>
+                <td><input type="text" name="fee" id="" required></td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td><input type="text" name="duration" id="" required></td>
+              </tr>
+              <tr>
+                <td><button class="btn btn-info">Add Course</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<script>
+    var a = [1,2,3,4,5,6,7,8,9];
+    //filter method on array********************************
+    a=a.filter(function(v,i){
+        if(v==2){
+            return v==2;
+        }
+        for(var j=2;j<v;j++){
+            return (v%j!=0);
+        }
+    });
+    console.log(a+" are not prime");
+    //reduce method on array*************************************
+    var a = [1,2,3,4,5,6,7,8,9];
+    a=a.reduce(function(r,v,i){
+        return r+v;
+    });
+    console.log(a);
+    //map method on array************************************
+    var a = [1,2,3,4,5,6,7,8,9];
+    a=a.map(function(v,i){
+       return v+1; 
+    });
+    console.log(a);
+    //forEach method on array*****************************
+    var a = [1,2,3,4,5,6,7,8,9];
+    a.forEach(function(v,i){
+        console.log(v+1);
+        a[i]=v**2;
+    });
+    console.log(a);
+</script>

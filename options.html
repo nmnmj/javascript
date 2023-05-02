@@ -1,0 +1,40 @@
+<select name="" id="state" onchange="show()">
+    <option value="">select state</option>
+    <option value="mp">mp</option>
+    <option value="up">up</option>
+    <option value="uk">uk</option>
+</select>
+<select name="" id="city">
+
+</select>
+<div id="hidiv">
+
+</div>
+<script>
+    var data = [
+        {state:"mp",cities:['indore','ujjain','bhopal']},
+        {state:"up",cities:['kanpur','jhansi']},
+        {state:"uk",cities:['gharwal','kumaon']}
+    ]
+    function show(){
+        var c = document.getElementById("city");
+            c.innerHTML="";
+        var stateselected = document.getElementById("state").value;
+        var f = data.filter(function(v){
+            return v.state==stateselected;
+        });
+        f=f[0];
+        for(var i of f.cities){
+        var t = document.createElement("option");
+        t.textContent=i;
+        var d = document.querySelector("#city");
+        d.appendChild(t);
+        }
+        var se = document.querySelector("#hidiv");
+        var cr = document.createElement("h1");
+        cr.textContent="hi";
+        se.appendChild(cr);
+    }
+    var display = show;
+    console.log(typeof(show));
+</script>

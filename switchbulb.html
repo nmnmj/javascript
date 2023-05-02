@@ -1,0 +1,17 @@
+<button id="b" onclick = "onoff()">SwitchON</button>
+<center><img src="https://www.w3schools.com/js/pic_bulboff.gif" id="bulb" alt="" ></center>
+<script>
+    function onoff(){
+        let a = document.getElementById("b");
+        if(a.innerHTML=="SwitchON"){
+            document.getElementById("bulb").src = "https://www.w3schools.com/js/pic_bulbon.gif";
+           a = a.innerHTML = "SwitchOFF"; 
+        }
+        else if(a.innerHTML=="SwitchOFF"){
+            document.getElementById("bulb").src = "https://www.w3schools.com/js/pic_bulboff.gif";
+            a = a.innerHTML = "SwitchON";
+        }
+    }
+    var a = NaN;
+    console.log(typeof a);          //NaN is number datatype
+</script>

@@ -1,0 +1,31 @@
+<script>
+    //IIFE
+    (function(){console.log("show");
+    console.log("show");
+    })();
+    //closure
+    function show(){
+        var a=10;
+        function display(){
+            return a;
+        }
+        return display();
+    }
+    console.log(show());
+/////////////////////////////////////////////////
+    function d(){
+        var f=99999;
+        return f;
+    }
+    console.log(d())
+    //function as class
+    var fc= new show();
+    //var keyword
+    function aaa(){
+        if(true){
+            let a=10;
+        }
+        console.log(a);
+    }
+    aaa();
+</script>

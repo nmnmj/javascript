@@ -1,0 +1,20 @@
+<script>
+    var data = [{roll:101,name:"ajay",address:"indore",result:98},
+    {roll:102,name:"jay",address:"ujjain",result:95},
+    {roll:103,name:"jaya",address:"indore",result:90},
+    {roll:104,name:"abhi",address:"bhopal",result:85},
+    {roll:105,name:"dev",address:"indore",result:68}
+    ]
+    var sum=0;
+    for(var i of data){
+        sum=sum+i.result;
+    }
+    document.write("Average result of college is "+sum/data.length);
+    for(let key in data[0]){
+        console.log(data[0][key]);
+    }
+    var s = "heloo everyone";
+    for(let ch in s){
+        console.log(s[ch]);
+    }
+</script>

@@ -1,0 +1,57 @@
+<button onclick="a=sparkle()">ON</button>
+<button onclick="off()">OFF</button>
+<img id="bulb1" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="">
+<img id="bulb2" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="">
+<img id="bulb3" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="">
+<img id="bulb4" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="">
+<script>
+    function sparkle(){
+        document.getElementById("bulb1").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        setTimeout(bulb1, 1000);
+        function bulb1(){
+            document.getElementById("bulb1").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb2").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb2, 2000);
+        function bulb2(){
+            document.getElementById("bulb2").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb3").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb3, 3000);
+        function bulb3(){
+            document.getElementById("bulb3").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb4").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb4, 4000);
+        function bulb4(){
+            document.getElementById("bulb4").src="https://www.w3schools.com/js/pic_bulboff.gif";
+        }
+    
+    setInterval(function(){
+        document.getElementById("bulb1").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        setTimeout(bulb1, 1000);
+        function bulb1(){
+            document.getElementById("bulb1").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb2").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb2, 2000);
+        function bulb2(){
+            document.getElementById("bulb2").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb3").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb3, 3000);
+        function bulb3(){
+            document.getElementById("bulb3").src="https://www.w3schools.com/js/pic_bulboff.gif";
+            document.getElementById("bulb4").src="https://www.w3schools.com/js/pic_bulbon.gif";
+        }
+        setTimeout(bulb4, 4000);
+        function bulb4(){
+            document.getElementById("bulb4").src="https://www.w3schools.com/js/pic_bulboff.gif";
+        }
+    },4000);
+    }
+
+    function off(){
+        window.location.href="seriesbulb.html";
+    }
+</script>

@@ -1,0 +1,29 @@
+<h1 id="h"></h1> <br><br>
+<button onclick="start()">start</button>
+<button onclick="stop()">stop</button>
+<button onclick="reset()">reset</button>
+<script>
+    let i=1
+    var n=1
+    var st
+    var stop;
+    var reset;
+    var e=document.getElementById("h");
+    function start(){
+        i=1
+        st=setInterval(()=>{
+            e.innerHTML=n;
+            n++
+            i++
+        },i*1000)
+        stop=()=>{
+            console.log("first")
+            clearInterval(st);
+        }
+        reset=()=>{
+            e.innerHTML=0;
+            n=1
+            clearInterval(st);
+        }
+    }
+</script>

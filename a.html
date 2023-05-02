@@ -1,0 +1,28 @@
+<script>
+    //js closure
+    function show(){
+        var a=10
+        
+        function display()
+        {
+            return a;
+        }
+        return display()
+    }
+    console.log(show());
+    //IIFE (immediately invoked function expression)
+    (function (){console.log("hello")}());
+    //prototype
+    var ss= new show()
+    show.prototype.b=20;
+    show.prototype.greet=function (){console.log("hello from greet")}
+    console.log(ss.b)
+    ss.greet()
+    //array sort
+    
+    var a=[1,5,4,3,9,6,7,20]
+    a.sort((a,b)=>{return a-b})
+    console.log(a)
+    a.reverse()
+    console.log(a)
+</script>

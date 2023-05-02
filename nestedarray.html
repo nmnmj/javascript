@@ -1,0 +1,17 @@
+<script>
+    var a = [5,6,7,8,9,[6,7,8],[2,3,4]];
+    var e = 0;
+    for(var i of a){
+        if(!Array.isArray(i)){
+            e=e+i;
+        }
+        if(Array.isArray(a[i])){
+            var s = 0;
+            for(var j of a[i]){
+                s=s+j;
+            }
+            document.write("sum of array is "+s+"<br>");
+        }
+    }
+    document.write("sum of normal elements is "+e);
+</script>

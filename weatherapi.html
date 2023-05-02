@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input::-webkit-outer-spin-button, */
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        }
+    </style>
+    <script>
+        function get(event){
+            console.log(event.key)
+            // console.log(typeof(event))
+            if(event.key==='Enter'){
+                weather()
+            }
+        }
+
+        async function weather(){
+            var city = document.getElementById("inpcity").value;
+            if(city==''){
+                return;
+            }
+            // city=city.value;
+            // console.log(city)
+            var res =await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=46a71b8a3d4e7631a1bcf996a36cff5e`)
+            var objarr = await res.json();
+            var obj = Object.values(objarr)[0];
+            var lat =Object.values(obj)[2];
+            var lon =Object.values(obj)[3];
+            // console.log(data);
+            document.getElementById("city").innerHTML=city.charAt(0).toUpperCase()+city.substring(1)+"'s";
+
+            var res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=46a71b8a3d4e7631a1bcf996a36cff5e`);
+            var objarr = await res.json(); //give array of objects
+            var obj = Object.values(objarr)[3] //give object from that array (give coord or weather)
+            var data = Object.values(obj)[0]    //give data from that object (give coord's - lon or lat)
+            var temp = data-273;
+            temp = temp.toFixed(2)
+            document.getElementById("temp").innerHTML=temp+'°';
+
+            
+
+            // console.log(temp)
+        }
+        // weather();
+//        [ {
+//   "coord": {
+//     "lon": 10.99,
+//     "lat": 44.34
+//   },
+//   "weather": [
+//     {
+//       "id": 501,
+//       "main": "Rain",
+//       "description": "moderate rain",
+//       "icon": "10d"
+//     }
+//   ],
+//   "base": "stations",
+//   "main": {
+//     "temp": 298.48,
+//     "feels_like": 298.74,
+//     "temp_min": 297.56,
+//     "temp_max": 300.05,
+//     "pressure": 1015,
+//     "humidity": 64,
+//     "sea_level": 1015,
+//     "grnd_level": 933
+//   },
+//   "visibility": 10000,
+//   "wind": {
+//     "speed": 0.62,
+//     "deg": 349,
+//     "gust": 1.18
+//   },
+//   "rain": {
+//     "1h": 3.16
+//   },
+//   "clouds": {
+//     "all": 100
+//   },
+//   "dt": 1661870592,
+//   "sys": {
+//     "type": 2,
+//     "id": 2075663,
+//     "country": "IT",
+//     "sunrise": 1661834187,
+//     "sunset": 1661882248
+//   },
+//   "timezone": 7200,
+//   "id": 3163858,
+//   "name": "Zocca",
+//   "cod": 200
+// }    ]
+    </script>
+</head>
+<body>
+    <input type="text"  name="" id="inpcity" onkeydown="get(event)" >
+    <button onclick="weather()">Get Temperature</button>
+    <h1>
+        Current <span id="city"></span> Temperature :- <span id="temp"></span>
+    </h1>
+</body>
+</html>

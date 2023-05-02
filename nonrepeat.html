@@ -1,0 +1,51 @@
+<script>
+    let a = [9,8,1,1,1,2,3,4,5,5,5,5,6,6,1];
+    document.write(a+"<br>");
+    var c=[];
+    var d = []
+    for(var i=0;i<a.length;i++){
+        var count=1;
+        for(var j=i+1;j<a.length;j++){
+            if(a[j]==a[i]){
+                count++;
+            }
+        }
+        if(count>1 && !c.includes(a[i])){
+            c=c+a[i];
+            document.write(a[i]+" comes "+count+" times in array<br>");
+        }
+        else if(count=1 && !d.includes(a[i])  && !c.includes(a[i])){
+            d=d+a[i]
+        }
+        if(!c.includes(a[i])){
+            document.write(a[i]+" comes 1 time is array <br>");
+        }
+    }
+    document.write("<hr>"+c+" comes multiple times in array. <br>");
+    document.write(d+" comes single time only.<br>");
+
+    // a.sort((a,b)=>a-b)
+    // const aa = new Set(a)
+    // console.log(aa)
+    //random number
+    // document.write(new Date());
+    // setTimeout(setInterval(function(){
+        //     var r = Math.floor(Math.random()*11);
+        //     if(!rr.includes(r)){
+            //         nr=nr+r;
+            //         document.write(r);
+            //     }
+            //     rr=rr+r;
+            // },5),1000);
+            // console.log("<br>"+nr);
+    // var rr=[];
+    // var nr=[];
+    // for(var i=0;i<=100;i++){
+    //     var r = Math.floor(Math.random()*11);
+    //     if(!rr.includes(r)){
+    //         nr=nr+r;
+    //     }
+    //     rr=rr+r;
+    // }        
+    // console.log(nr);
+</script>

@@ -1,0 +1,521 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*" %>
+<%@page import="java.sql.*" %>
+<%@include file="db.jsp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>
+
+	$(document).ready(function(){
+		
+    $("#signinmodal").modal("hide")
+    // sidemenu
+    $(".sidemenu").click(function(){
+      $("#sidemenu").collapse("toggle")
+    })
+    // sign in modal
+    $(".signbtn").click(function(){
+      $("#signinmodal").modal("toggle")
+    })
+		$("#myModal").modal('hide');
+		$("#myinnerModal").modal('hide');
+    $(".oo").click(function(){
+      $("#myinnerModal").modal('show')
+      })
+    });
+    
+    $(document).ready(function(){
+      var d= new Date();
+      $(".dd").text(d);
+        $("#navbarDropdown").click(function(){
+            $("#myModal").modal('show')
+        })
+        // var a='hide' mumbai collapse
+        $("#mumbai, #collapseExample").mouseover(function(){
+          // a=='hide'?a='show':a='hide'
+          $("#collapseExample").collapse("show")
+
+        })
+        $("#mumbai, #collapseExample").mouseleave(function(){
+          $("#collapseExample").collapse("hide")
+        })
+        //mumbai collapse over
+        //view all cities
+        $(".oo").click(function(){
+            $(this).text('')
+            $("#collapseExample2").collapse("toggle")
+        })
+
+        //getting city
+        $(".c").click(function(){
+
+            var city=$(this).children('.p').text();
+            $("#navbarDropdown").text(city)
+            $('#myModal').modal("hide")
+            $('#myinnerModal').collapse("hide")
+        })
+        $(".l").click(function(){
+
+            var city=$(this).text();
+            $("#navbarDropdown").text(city)
+            $('#myModal').modal("hide")
+            $('#myinnerModal').collapse("hide")
+        })
+        
+        $(".as").click(function(){
+            $(".oo").text("View All Cities")
+          $("#collapseExample2").collapse("toggle")
+        })
+	});
+   
+</script>
+
+<%
+	String moviee =request.getParameter("movie");
+	//String src=(String)session.getAttribute("src");
+	String qr="select * from movies where name='"+moviee+"'";
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery(qr);
+	if(rs.next()){
+			String movie=rs.getString("name");
+			String src=rs.getString("src");			
+		
+	%>
+	
+
+<style>ś
+  body{
+    background-color: black;
+  }
+  .col-md-8{
+    
+  }
+  .hw:hover{
+      background-color: antiquewhite;
+    }
+    a{
+        text-decoration: none;
+        text-decoration: underline none;
+    }
+    .p{
+        font-size: 11px;
+    }
+    .imghover{
+      filter: contrast(80%);
+      
+    }
+    .imghover:hover{
+      filter: contrast(200%);
+      text-decoration: double;
+    }
+    ul{
+      list-style-type: none; /* Remove bullets */
+     
+    }
+    .l{
+      text-decoration: none;
+      filter: contrast(200%);
+      
+    }
+    .glow:hover{
+     color: white;
+     text-decoration:none;
+    }
+    .uc{
+      -webkit-touch-callout: none;
+      -webkit-user-select:none;
+      -khtml-use-select:none;
+      -ms-user-select:none;
+    }
+    a{
+    	text-decoration: none;
+    }
+</style>
+</head>
+<body>
+  <!-- this is modal -->
+<div id="myModal" class=" modal fade close" data-toggle="modal" aria-hidden="true" >
+  <div class="modal-dialog modal-lg ">
+      <div class="modal-content">
+          
+          <div class="modal-body">
+      <p></p>
+              
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="&#x1F50D; Search for your city">
+                  </div>
+                 
+                  <div class="form-group">
+                     <center><p class="uc">Popular Cities</p></center>
+                  </div>
+                  <button id="mumbai"  class="btn c "><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/mumbai-selected.png" alt="" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><p class="p city">Mumbai</p></button>
+                  
+                  <button  class="btn c "><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/ncr.png" alt=""><p class="p city">Delhi-NCR</p></button>
+                  <button  class="btn c "><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/bang.png" alt=""><p class="p city">Bengaluru</p></button>
+                  <button  class="btn c "><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/hyd.png" alt=""><p class="p city">Hyderabad</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/ahd.png" alt=""><p class="p city">Ahemdabad</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/chd.png" alt=""><p class="p city">Chandigarh</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/chen.png" alt=""><p class="p city">Chennai</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/pune.png" alt=""><p class="p city">Pune</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/kolk.png" alt=""><p class="p city">Kolkata</p></button>
+                  <button  class="btn c"><img height="30px" width="30px" src="https://in.bmscdn.com/m6/images/common-modules/regions/koch.png" alt=""><p class="p city">Kochi</p></button><br>
+                  <div class="collapse " id="collapseExample" style="position: absolute; margin-top: -38px;">
+                    <div class="container-fluid card card-body d-inline-block " style="font-size: 10px; background-color: antiquewhite;">
+                      <a class="l mx-3" style="color: black;" href="#">Mumbai:Western</a>
+                      <a class="l mx-3" style="color: black;" href="#">Mumbai:South and Central</a>
+                      <a class="l mx-3" style="color: black;" href="#">Navi Mumbai</a>
+                      <a class="l mx-3" style="color: black;" href="#">Thane</a>
+                      <a class="l mx-3" style="color: black;" href="#">Kalyan</a>
+                      <a class="l mx-3" style="color: black;" href="#">Ulhasnagar</a>
+                    </div>
+                  </div>
+                  <center><a href="#" class="text-danger oo" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"  >View All Cities</a></center>
+                  
+                  <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+                      
+                          <h6 class="text-center">Other cities</h6>
+                          <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                              <ul>
+                                <li><a href="#"><small class="p text-dark l">Aalo</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Addanki</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Agar-Malwa</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Ahmednagar</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Akbarpur</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alakode</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alibaug</small></a></li>
+                              </ul>
+                            </div>
+                            <div class="col-2">
+                              <ul>
+                                <li><a href="#"><small class="p text-dark l">Aalo</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Addanki</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Agar-Malwa</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Ahmednagar</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Akbarpur</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alakode</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alibaug</small></a></li>
+                              </ul>
+    
+                            </div>
+                            <div class="col-2">
+                              <ul>
+                                <li><a href="#"><small class="p text-dark l">Aalo</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Addanki</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Agar-Malwa</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Ahmednagar</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Akbarpur</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alakode</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alibaug</small></a></li>
+                              </ul>
+                            </div>
+                            <div class="col-2">
+                              <ul>
+                                <li><a href="#"><small class="p text-dark l">Aalo</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Addanki</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Agar-Malwa</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Ahmednagar</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Akbarpur</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alakode</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alibaug</small></a></li>
+                              </ul>
+                            </div>
+                            <div class="col-2">
+                              <ul>
+                                <li><a href="#"><small class="p text-dark l">Aalo</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Addanki</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Agar-Malwa</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Ahmednagar</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Akbarpur</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alakode</small></a></li>
+                                <li><a href="#"><small class="p text-dark l">Alibaug</small></a></li>
+                              </ul>
+                            </div>
+                            <div class="col-1"></div>
+                          </div>
+                          <div class="text-center">
+                            <h6><a href="#" style="color: red;" class="as"  >Hide All Cities</a></h6>
+                          </div>
+                         
+                          
+                        
+                  </div>
+                  </div>
+                                                       
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- this is navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand mx-5" href="#"><img src="https://in.bmscdn.com/webin/common/icons/logo.svg" alt="image"></a>    
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline">
+          <input class="form-control mr-sm-2" style="width: 500px;" type="search" placeholder=" Search for Movies, Event, Plays, Sports and avitities" aria-label="Search">
+      </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#"></a>
+      </li>
+    </ul>
+    <!-- right side nav -->
+    <div class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+            </li>
+      </ul>
+      <button class="btn btn-danger my-sm-0 signbtn" data-bs-toggle="modal" data-bs-target="#signinmodal" >Sign In</button>
+      <button class="btn my-sm-0 sidemenu" data-bs-toggle="collapse" data-bs-target="sidemenu" ><img width="25px" src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/2x/external-horizontal-separated-bars-representing-hamburger-menu-layout-grid-bold-tal-revivo.png" alt=""></button>
+    </div>
+  </div>
+</nav>
+<!-- sidemenu -->
+<div class="collapse" id="sidemenu" style="z-index: +1;">
+  <div class="card card-body bg-dark">
+    <div class="text-right">
+      <button class="btn btn-info" onclick="location.href='Alogin.jsp'">Admin Login</button>
+    </div>
+  </div>
+</div>
+<!-- sign in modal -->
+<div class="modal fade" id="signinmodal" tabindex="-1" aria-labelledby="signinmodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signinmodal">Get Started</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="my-2 "><button href="#" class="btn btn-light p-2 rounded container d-inline text-left"><i class="fa fa-google hw my-2 mx-5"></i><span class="text-center mx-5">Continue with Google</span> </button></div>
+        <div class="my-2 "><button href="#" class="btn btn-light p-2 rounded container d-inline text-left"><i class="fa fa-envelope my-2 mx-5"></i><span class="text-center mx-5">Continue with Email</span> </button></div>
+        <div class="my-2 "><button href="#" class="btn btn-light p-2 rounded container d-inline text-left"><i class="fa fa-apple my-2 mx-5"></i><span class="text-center my-2 mx-5">Continue with Apple</span> </button></div>
+        <div class="container text-center">OR</div>
+      <div class="modal-footer my-4">
+        <div class="container"><span class="d-inline-flex"><img src="https://in.bmscdn.com/webin/common/icons/indianflag.svg" alt=""><span class="text-black-50">+91</span><input type="text" style="width: 400px;" name="" id="" placeholder="Continue with mobile number"></span></div>
+        <div class="container mt-5 text-black-50">I agree to the <a href="#" class="text-dark">Terms and Condition</a> and <a href="#" class="text-dark">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</div> 
+</div>   
+  <!-- 2nd navbar   -->
+  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: black;">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Stream <sup style="color: red; font-size: 7px;">NEW</sup></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Plays</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Activities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Buzz</a>
+          </li>
+          
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">ListYourShow <sup style="color:red;font-size:7px">NEW</sup> </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Corporates</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Offers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">GiftCards</a>
+                </li>
+              </ul>
+          </div>    
+        </form>
+      </div>
+    </nav>
+  <!-- card*********************************************** -->
+	<div class="card mb-3 " style="max-width: 80%;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="imgsrc img-fluid" src="<%=src %>" class="card-img" alt="">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title" style="color:black;"><%=movie%></h1>
+          <p class="card-text mt-5">
+            <a href="#">2D</a>
+            <a href="#">3D</a>
+            <a href="#">3D SCREEN X</a>
+            <a href="#">4D X 3D</a>
+            <a href="#">IMAX 3D</a>
+          </p>
+          <p class="card-text">
+            <a href="#">English</a>
+            <a href="#">Hindi</a>
+          </p>
+          <h5 class="text-black ">3h 12m
+            *
+            <a href="#">Action</a> 
+            ,
+            <a href="#">Adventure</a> 
+            ,
+            <a href="#">Fantasy</a> 
+            ,
+            <a href="#">Sci-Fi </a>
+            *
+            UA
+            *
+            <p class="dd"></p></h5>
+            <button class="btn btn-danger mt-5 pl-5 pr-5 p-4 ">Book tickets</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+  <!-- footer  -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid text-white">
+      <img src="https://in.bmscdn.com/webin/common/icons/hut.svg" alt="">
+      <a class="navbar-toggler "><b>List your Show &nbsp; &nbsp;</b> Got a show, event, activity or a great experience? Partner with use and get listet on BookMyShow</a>
+      <form class="d-flex">
+        <button class="btn btn-danger" type="submit">Contact Today!</button>
+      </form>
+    </div>
+  </nav>
+  <!-- footer 2 -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container text-white">
+      <a class="imghover">
+        <center><img  href="#"  src="https://cdn-icons-png.flaticon.com/128/870/870073.png" alt=""></center>
+        <small style="color: black;" class="uc" > 24/7CUSTOMER CARE</small> 
+      </a>
+      <a class="imghover">
+        <center><img  href="#"  src="https://cdn-icons-png.flaticon.com/128/175/175613.png" alt=""></center>
+        <small style="color: black;" class="uc" > RESENT BOOKING CONFIRMATION</small>
+      </a>
+      <a class="imghover">
+        <center><img  href="#"  src="https://cdn-icons-png.flaticon.com/128/1628/1628639.png" alt=""></center>
+        <small style="color: black;" class="uc" > SUBSCRIBE TO NEWSLETTER</small>
+      </a>  
+    </div>
+  </nav>
+  <!-- footer 3 -->
+  <footer class="text-white-50 bg-dark">
+    <div class="container-fluid">
+      <div>
+        <h7>MOVIES NOW SHOWING IN MUMBAI</h7>
+      </div>
+      <div>
+        <a class="text-white-50 " href="#"><small class="glow">Avatar: The Way of Water</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Cirkus</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Drishyam 2</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Bhediya</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Kaapa</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Dhamaka</small> </a><SPAn> |</SPAn>
+        <a class="text-white-50 " href="#"><small class="glow">Uunchai</small> </a><SPAn> |</SPAn>
+      </div>
+
+    </div>
+  </footer>
+  <!-- logo wala footer -->
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class=" p-4 pb-0">
+      <div class="">
+        <hr style="z-index: +1;background-color: rgb(85, 82, 82);">
+        <center>
+          <img style="position: relative;margin-top: -55px;" src="https://in.bmscdn.com/webin/common/icons/logo.svg" alt="">
+        </center>
+      </div>
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fa fa-facebook"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fa fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fa fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fa fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fa fa-linkedin"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="	fa fa-git"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" >
+      <small class="text-white-50">Copyright 2022 © Bigtree Entertainment Pvt. Ltd. All Rights Reserved</small>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</body>
+</html>

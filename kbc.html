@@ -1,0 +1,37 @@
+<output id="output"></output>
+<center><img src="https://i.gifer.com/Z30J.gif" height="300px"  alt=""></center>
+<output id="output1"></output>
+<script>
+    window.onload = function one() {
+    var minute = 4;
+    var sec = 60;
+    setInterval(function() {
+        document.getElementById("output").innerHTML = minute + " : " + sec;
+        sec--;
+        if (minute == 00 && sec == 0) {
+            console.log("hello");
+            window.location.href="kbc.html";
+        }
+        if (sec == 00) {
+        minute --;
+        sec = 60;
+        }  
+    }, 1000);
+    
+    setInterval(timer, 1000);
+    var ssec = 0;
+    var sminute = 0;
+    function timer(){
+        document.getElementById("output1").innerHTML= sminute + ":" + ssec;
+        ssec++;
+        if(sminute == 4 && ssec == 60){
+            location.href="kbc.html";
+        }
+        if(ssec==60){
+            sminute++;
+            ssec=0;
+        }
+    }    
+}
+
+</script>

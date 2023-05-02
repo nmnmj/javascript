@@ -1,0 +1,184 @@
+<script>
+    // prime no check***********************************************
+    // let a = prompt("enter number");
+    // if(a==0 || a==1){
+    //     document.write(a+" is not prime");
+    // }
+    // for(var i=2; i<a; i++){
+    //     if(a%i==0){
+    //         break;
+    //     }
+    // }
+    //     if(i==a){
+    //         document.write(a+" is prime");
+    //     }
+    //     else{
+    //         document.write(a+" is not prime");
+    //     }
+    // check no is palindrome ***************************************
+    // let b = prompt("check palindrome number"), r=0, s=0, t=b;
+    // while(b>0){
+    //     r=b%10;
+    //     s=s*10+r;
+    //     b=parseInt(b/10);
+    // }
+    // if(s==t){
+    //     document.write(s+" is palindrome");
+    // }
+    // else{
+    //     document.write(s+" is not a plaindrome");
+    // }
+    //check a no is odd or even****************************************************
+    // let n = prompt("check odd or even");
+    // if(n%2==0){
+    //     document.write(n+" is even");
+    // }
+    // else{
+    //     document.write(n+" is odd");
+    // }
+    // check a no is armstrong*******************************************************
+    // let n = prompt("check armstrong"),s=0,t=n;
+    // while(n>0){
+    //     var r = n%10;
+    //     s = s + Math.pow(r,t.length);
+    //     n=parseInt(n/10);
+    // }
+    // if(s==t){
+    //     document.write(s+" is palindrome");
+    // }
+    // else{
+    //     document.write(s+" is not palindrome");
+    // }
+    // print reverse of a number****************************************
+    // let b = prompt("reverse of a number"), r=0, s=0, t=b;
+    // while(b>0){
+    //     r=b%10;
+    //     s=s*10+r;
+    //     b=parseInt(b/10);
+    // }
+    // document.write(s);
+    // biggest digit of a no.***********************************************
+    // let n = prompt("enter a no"), s=0;
+    // while(n>0){
+    //     var r = n%10;
+    //     if(r>s){
+    //         s=r;
+    //     }
+    //     n=parseInt(n/10);
+    // }
+    // document.write(s+' is the biggest digit');
+    // sum of digit of a number***************************************************
+    // let n = prompt("enter a number"), s=0;
+    // while(n>0){
+    //     var r = n%10;
+    //     s=s+r;
+    //     n=parseInt(n/10);
+    // }
+    // document.write(s+" is the sum");
+    // print even digits of a number******************************
+    // let n = prompt("enter a number"), s=0;
+    // while(n>0){
+    //     var r=n%10;
+    //     if(r%2==0){
+    //         document.write(r);
+    //     }
+    //     n=parseInt(n/10);
+    // }
+    // sum of even and odd digits of a number*********************
+    // let n = prompt("enter a number"),se=0,so=0;
+    // while(n>0){
+    //     var r = n%10;
+    //     if(r%2==0){
+    //         se = se + r;
+    //     }
+    //     else{
+    //         so = so + r;
+    //     }
+    //     n=parseInt(n/10);
+    // }
+    // document.write(se+" is the even digits sum of a number <br>");
+    // document.write(so+" is the odd digits sum of a number");
+    // sort array in ascending or descending order****************************
+    // let n = [1,44,6,7,99,101,3];
+    // n = n.sort(function(a,b){return a-b});      //function give values to sort for comparision 
+    // document.write(n +"<br>");                          
+    // document.write(n.reverse());
+    // factorial of each element of array*********************
+    // var n = [1,2,3,4,5], s=1;
+    // for(var i =0;i<n.length;i++){
+    //     s=1
+    //     for(var j=1;j<=n[i];j++){
+    //         s=s*j;
+    //     }
+    //     document.write(s+"<br>");
+    // }
+    // factor of a number in a range*********************************************
+    // let n = prompt("enter a number");
+    // let rangeStart =  prompt("starting range");
+    // let maxRange =  prompt("max range of factor");
+    // for(var i = rangeStart; i<= maxRange; i++){
+    //     if(n%i==0){
+    //         document.write(i);
+    //     }
+    // }
+    // print sum of array elements*************************
+    // var n = [1,2,3,4,5],s=0;
+    // for(var i=0;i<n.length;i++){
+    //     s=s+n[i];
+    // }
+    // document.write(s);
+    // print second biggest element of array********************
+    // var a = [1,2,3,4,5],s=0,sl;
+    // a=a.sort(function(a,b){return a-b});
+    // document.write(a[a.length-2]);
+    // print duplicate elements***********************************************************
+    // let a = [1,1,1,2,3,4,5,5,5,5];
+    // for(var i=0;i<a.length;i++){
+    //     for(var j=i+1;j<a.length;j++){
+    //         if(a[i]==a[j]){
+    //             if(a[s]==a[j]){
+    //                 break;
+    //             }
+    //             var s = j;
+    //             document.write(a[i]+"<br>");
+    //         }
+    //     }
+    // }
+    // print duplicate no and their count*****************************************************
+    let a = [1,1,1,2,3,4,5,5,5,5,6,6,1];
+    document.write(a+"<br>");
+    for(var i=0;i<a.length;i++){
+        for(var k=i+1;k<a.length;k++){
+            count=1;
+            for(var j=i;j<a.length;j++){
+                if(a[i]==a[j+1]){
+                    count++;
+                }
+            }
+            if(a[i]==a[k]){
+                if(a[s]==a[k]){
+                    break;
+                }
+                var s=0;
+                s = k;
+                document.write(a[i]+" comes "+count+" times in array <br>");
+            }
+        }
+    }
+    var b=[];
+    for(var i=0;i<a.length;i++){
+        for(var j=i+1;j<a.length;j++){
+            if(a[j]==a[i]){
+                b=b+a[j];
+                break;
+            }
+        }
+        if(!b.includes(a[i])){
+            document.write(a[i]+" comes 1 time is array <br>");
+        }
+    }
+    // print reverse of a string********************************************
+    // var s = prompt("enter a string");
+    // s=s.split("").reverse().join("");
+    // document.write(s);
+</script>

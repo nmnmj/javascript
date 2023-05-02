@@ -1,0 +1,14 @@
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<div id="4" style="display: block" onchange="selected()">Haemoglobin term is related to which thing in our body? <br><br>
+    <input type="radio" name="4" value="a">A.- Bone
+    <input type="radio" name="4" value="b">B.- BoneMarrow
+    <input type="radio" name="4" value="c">C.- Blood
+    <input type="radio" name="4" value="d">D.- Eye
+</div>
+<script>
+    var n=4;
+    function selected(){
+        var val=$(`input[type='radio'][name='${n}']:checked`).val();
+        console.log(val);
+    }
+</script>

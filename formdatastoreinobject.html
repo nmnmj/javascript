@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <script>
+        let data=[];
+        function saveData(){
+            let dataObj={
+                name:document.getElementById("name").value,
+                email:document.getElementById("email").value,
+                pwd:document.getElementById("pwd").value,
+                number:document.getElementById("number").value,
+            };
+            data.push(dataObj);
+            console.log(data);
+        }
+    </script>
+</head>
+<body>
+    <center>
+    
+        <table>
+            <tr>
+                <th colspan="2">Form</th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Name</label>
+                </td>
+                <td>
+                    <input type="text" name="" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email</label>
+                </td>
+                <td>
+                    <input type="email" name="" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pwd">Password</label>
+                </td>
+                <td>
+                    <input type="password" name="" id="pwd">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="number">Mobile Number</label>
+                </td>
+                <td>
+                    <input type="number" name="" id="number">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><center><button id="btn" onclick="saveData()">Submit</button></center></td>
+            </tr>
+        </table>
+    
+    </center>
+</body>
+</html>
